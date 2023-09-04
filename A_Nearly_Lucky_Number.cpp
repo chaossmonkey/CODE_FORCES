@@ -1,41 +1,30 @@
-#include<bits/stdc++.h>
-using namespace std;
+#include <iostream>
 
-#define endl '\n'
-#define int long long
+bool containsOnly47(long long n) {
 
-const int MOD=1e9+7;
-const int INF=LLONG_MAX>>1;
-
-signed main()
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    int number;
-    cin >> number;
-
-    string s = to_string(number);
-    bool flag = true;
-
-    for (auto i : s)
+    if(n==0)
     {
-        int val = stoi(string(1, i)); // Convert the character i to a string and then to an integer
-        if (val != 4 && val != 7) // Use logical AND (&&) instead of logical OR (||)
-        {
-            flag = false;
-            break;
+        return false;
+    }
+    while (n > 0) {
+        int digit = n % 10;
+        if (digit != 4 && digit != 7) {
+            return false;
         }
+        n /= 10;
+    }
+    return true;
+}
+
+int main() {
+    long long number;
+    std::cin >> number;
+
+    if (containsOnly47(number)) {
+        std::cout << "YES" << std::endl;
+    } else {
+        std::cout << "NO" << std::endl;
     }
 
-    if (flag == true)
-    {
-        cout << "YES" << endl;
-    }
-    else
-    {
-        cout << "NO" << endl;
-    }
-    
-    return 0; // You should return 0 to indicate successful execution
+    return 0;
 }
